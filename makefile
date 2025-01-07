@@ -1,16 +1,16 @@
-all: project
+$CC=gcc
+$CFLAGS=-Wall
 
-clean: project poliglotta.o italian.o english.o
-	rm -f project main.o italian.o english.o
+all: somma_incrementale
 
-project: main.o italian.o english.o
-	gcc -o project poliglotta.o italian.o english.o
+clean: somma_incrementale somma_incrementale_*.o
+	rm -f somma_incrementale somma_incrementale_*.o
 
-plolgotta.o: poliglotta.c
-	gcc -c -o poliglotta.o poliglotta.c
+somma_incrementale: somma_incrementale_a.o somma_incrementale_b.o
+	gcc -o somma_incrementale somma_incrementale_a.o somma_incrementale_b.o
 
-italian.o: italian.c
-	gcc -c -o italian.o italian.c
+somma_incrementale_a.o: somma_incrementale.h somma_incrementale_a.c
+	gcc -c -o somma_incrementale_a.o somma_incrementale_a.c
 
-english.o: english.c
-	gcc -c -o english.o english.c 
+somma_incrementale_b.o: somma_incrementale.h somma_incrementale_b.c
+	gcc -c -o somma_incrementale_b.o somma_incrementale_b.c
